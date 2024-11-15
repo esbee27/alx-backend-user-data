@@ -8,8 +8,12 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         if path is None or excluded_paths is None:
             return True
-        if path in excluded_paths:
+        if path[-1] != "/":
+            path += "/"
+
+        if path in exluded_paths:
             return False
+
         return False
     
     def authorization_header(self, request=None) -> str:
@@ -21,3 +25,4 @@ class Auth:
     
     def current_user(self, request=None) -> TypeVar("User"):
         return None
+
