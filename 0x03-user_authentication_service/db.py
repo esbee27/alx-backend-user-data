@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """DB module
 """
 from sqlalchemy import create_engine
@@ -46,4 +47,6 @@ class DB:
         user = self._session.query(User).filter_by(**kwargs).first()
         if user is None:
             raise NoResultFound
-        
+    def update_user(self, user_id: int, **kwargs) -> user:
+        user = self.find_user_by(id=user_id)
+        return None
