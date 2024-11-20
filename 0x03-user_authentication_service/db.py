@@ -35,9 +35,8 @@ class DB:
 
     def add_user(self, email: str, hashed_password: str) -> User:
         user = User(email=email, hashed_password=hashed_password)
-        session = self.__session
-        session.add(user)
-        session.commit()
+        self._session.add(user)
+        self._session.commit()
         return user
     
 
@@ -47,6 +46,11 @@ class DB:
         user = self._session.query(User).filter_by(**kwargs).first()
         if user is None:
             raise NoResultFound
-    def update_user(self, user_id: int, **kwargs) -> user:
-        user = self.find_user_by(id=user_id)
-        return None
+        
+    """def update_user(self, user_id: int, **kwargs) -> User:
+        try:
+            self.find_user_by(id=user_id)
+        except:
+            """
+
+

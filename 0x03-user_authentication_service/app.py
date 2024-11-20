@@ -23,6 +23,11 @@ def users(email, password):
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
 
+@app.route("/session", methods=["POST"])
+def login(email, password):
+    email = request.form.get("email")
+    password = request.form.get("password")
+    
 
 
 if __name__ == "__main__":
